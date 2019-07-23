@@ -1,0 +1,219 @@
+
+<div class="row mt-3 mb-3 text-center" *ngIf="friends.length === 0">
+    <div class="col-12">
+        <div class="loading-bar" >
+            <div class="loading-bar-element" ></div>
+            </div>
+    </div>
+  </div>
+  <div [@listState]="friends?.length">
+<div class="row mt-3 mb-3 text-center">
+    
+  <div
+    class="col-md-4 col-xs-12 col-sm-12 col-xl-4"
+    *ngFor="
+      let friend of friends
+        | paginate: { itemsPerPage: 3, currentPage: p, id: 'first' }
+    "
+  >
+    <div class="row m-2">
+      <div class="card">
+         
+        <div class="card-body">
+          <i class="material-icons">
+            face
+          </i>
+          <h6 class="card-title">{{ friend?.fullName | titlecase }}</h6>
+          <p class="text-muted">{{ friend.email }}</p>
+
+          <!-- <button
+            class="btn btn-primary"
+            (click)="requestSent(friend._id, friend.email, friend.fullName)"
+          >
+            follow
+          </button> -->
+      <!--     <button mat-icon-button color="primary">
+            <mat-icon (click)="requestSent(friend._id, friend.email, friend.fullName)" style="cursor: pointer">add_circle</mat-icon>
+          </button> -->
+          <button mat-mini-fab color="primary" (click)="requestSent(friend._id, friend.email, friend.fullName)" >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<pagination-controls
+  (pageChange)="p = $event"
+  responsive="true"
+  id="first"
+></pagination-controls>
+
+<div class="row text-center">
+  <div class="col-12">
+    <h1 class="text-capitalize">Sent requests</h1>
+  </div>
+</div>
+
+
+<div class="row mt-3 mb-3 text-center" *ngIf="friendRequests.length === 0">
+  <div class="col-12">
+      <h6 class="text-primary">No sent requests</h6>
+          </div>
+  </div>
+
+  <div [@listState]="friends?.length">
+<div class="row mt-3 mb-3 text-center" *ngIf="friendRequests.length !== 0">
+  <div
+    class="col-md-4 col-xs-12 col-sm-12 col-xl-4"
+    *ngFor="
+      let request of friendRequests
+        | paginate: { itemsPerPage: 3, currentPage: q, id: 'second' }
+    "
+  >
+    <div class="row m-2">
+      <div class="card">
+        <div class="card-body">
+          
+            
+          
+
+          <i class="material-icons">
+            face
+          </i>
+          <h6 class="card-title">{{ request.fullName | titlecase }}</h6>
+          <p class="text-muted">{{ request.email }}</p>
+
+          <div class="badge badge-warning">Pending</div>
+          <div class="row">
+            <div class="col-12">
+                <button class="btn btn-danger" (click)="onCancel(request._id, request.receiver, request.sender)">Cancel</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<pagination-controls
+  (pageChange)="q = $event"
+  responsive="true"
+  id="second"
+  *ngIf="friendRequests.length !== 0"
+></pagination-controls>
+
+<div class="row text-center">
+  <div class="col-12">
+    <h1 class="text-capitalize">Received requests</h1>
+  </div>
+</div>
+
+<div class="row mt-3 mb-3 text-center" *ngIf="receivedRequests.length === 0">
+  <div class="col-12">
+    <h6 class="text-danger">No friend requests recieved!!</h6>
+  </div>
+</div>
+
+<div [@listState]="receivedRequests?.length">
+<div class="row mt-3 mb-3 text-center" *ngIf="receivedRequests.length !== 0">
+  <div
+    class="col-md-4 col-xs-12 col-sm-12 col-xl-4"
+    *ngFor="
+      let receive of receivedRequests
+        | paginate: { itemsPerPage: 3, currentPage: r, id: 'third' }
+    "
+  >
+    <div class="row m-2">
+      <div class="card">
+        <div class="card-body">
+          <i class="material-icons">
+            face
+          </i>
+          <h6 class="card-title">{{ receive.fullName | titlecase }}</h6>
+          <p class="text-muted">{{ receive.email }}</p>
+
+          <div class="row">
+            <div class="col-6">
+            <!--   <button
+                class="btn btn-success float left"
+                (click)="onAccept(receive._id, receive.fullName, receive.email)"
+              >
+                Accept
+              </button> -->
+
+              <button mat-mini-fab color="primary" (click)="onAccept(receive._id, receive.fullName, receive.email)" >
+                  <mat-icon>check</mat-icon>
+                </button>
+            </div>
+            <div class="col-6">
+              <!-- <button class="btn btn-danger float left" (click)= "onDecline(receive._id)">Decline</button> -->
+
+              <button mat-mini-fab color="warn" (click)= "onDecline(receive._id)" >
+                  <mat-icon>close</mat-icon>
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<pagination-controls
+  (pageChange)="r = $event"
+  responsive="true"
+  id="third"
+  *ngIf="receivedRequests.length !== 0"
+></pagination-controls>
+
+<div class="row text-center">
+  <div class="col-12">
+    <h1 class="text-capitalize">All friends</h1>
+  </div>
+</div>
+
+<div class="row mt-3 mb-3 text-center" *ngIf="allFriends.length === 0">
+  <div class="col-12">
+    <h6 class="text-info">You have no friends!!!</h6>
+  </div>
+</div>
+
+<div [@listState]="allFriends?.length">
+<div class="row mt-3 mb-3 text-center" *ngIf="allFriends.length !== 0">
+  <div
+    class="col-md-4 col-xs-12 col-sm-12 col-xl-4"
+    *ngFor="
+      let friend of allFriends
+        | paginate: { itemsPerPage: 3, currentPage: s, id: 'fourth' }
+    "
+  >
+    <div class="row m-2">
+      <div class="card">
+        <div class="card-body">
+          <i class="material-icons">
+            face
+          </i>
+          <h6 class="card-title">{{ friend.fullName | titlecase }}</h6>
+          <p class="text-muted">{{ friend.email }}</p>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="badge badge-info">friends</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<pagination-controls
+  (pageChange)="s = $event"
+  responsive="true"
+  id="fourth"
+  *ngIf="allFriends.length !== 0"
+></pagination-controls>

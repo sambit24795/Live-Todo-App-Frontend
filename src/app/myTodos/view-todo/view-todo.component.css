@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  font-family: 'Fredoka One', cursive;
+}
+.strikeThrough {
+  text-decoration: line-through black;
+  color: red;
+}
+
+.todo-card {
+  width: 20rem;
+  height: 100%;
+  background-color: #c3ffe6;
+}
+
+.doing-card {
+  width: 20rem;
+  height: 100%; 
+  background-color: #ffffac;
+}
+
+.done-card {
+  width: 20rem;
+  height: 100%;
+  background-color: rgb(221, 221, 221);
+}
+.text-warn {
+  color: black;
+}
+
+
+ul {
+  margin: 0 0 5px;
+  padding-left: 25px;
+}
+p {
+  margin: 0 0 5px;
+}
+h4 {
+  margin: 0;
+}
+div.card-header {
+  padding: 10px 20px;
+}
+/* .example-header-image {
+    background-image: url('https://thumbs.dreamstime.com/b/business-cartoon-character-checking-checklist-clipboard-vector-illustration-41802476.jpg');
+    background-size: cover;
+  }
+ */
+/*  'https://media.istockphoto.com/vectors/to-do-list-icon-cartoon-vector-id696609040' */

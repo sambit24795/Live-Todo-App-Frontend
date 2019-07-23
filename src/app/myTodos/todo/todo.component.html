@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <h5 class="card-header" [ngClass]="titleChange()">
+        <div class="row">
+          <div class="col-6">
+            {{ todo.title }}
+            <span class="badge" [ngClass]="getStatusClass()">
+              {{ todo.status }}</span
+            >
+          </div>
+          <div class="col-6">
+            <span
+              ><h6 class="text-capitalize float-right">
+                created by: {{ creatorName }}
+              </h6></span
+            >
+          </div>
+        </div>
+      </h5>
+      <div class="card-body ">
+        <h6 class="card-title" [ngClass]="getDisableStatus()">
+          {{ todo.description }}
+        </h6>
+        <p [ngClass]="getDisableStatus()">{{ todo.date }}</p>
+        <div class="row">
+          <div class="col-12">
+            <!-- <button class="btn btn-primary float-right" (click)="onView()">View Task</button>
+            <button class="btn btn-danger float-right" (click)="onDelete()">Delete Task</button> -->
+            <a
+              mat-icon-button
+              matTooltip="undo"
+              color="primary"
+              class="float-right"
+              (click)="onUndo()"
+              ><mat-icon>
+                undo
+              </mat-icon></a
+            >
+
+            <a
+              *ngIf="isAuthenticated"
+              mat-icon-button
+              matTooltip="delete"
+              color="warn"
+              class="float-right"
+              (click)="onDelete()"
+              ><mat-icon>
+                delete
+              </mat-icon></a
+            >
+            <a
+              *ngIf="isAuthenticated"
+              mat-icon-button
+              color="accent"
+              matTooltip="edit"
+              class="float-right"
+              (click)="onEdit()"
+              ><mat-icon>
+                edit
+              </mat-icon></a
+            >
+            <a
+              mat-icon-button
+              matTooltip="view"
+              color="primary"
+              class="float-right"
+              (click)="onView()"
+              ><mat-icon>
+                remove_red_eye
+              </mat-icon></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- #6c757d  -->

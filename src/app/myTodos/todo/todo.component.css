@@ -1,0 +1,25 @@
+:host {
+    display: block;
+    border-radius: 3px;
+    box-shadow: 3px 3px 2px #ccc;
+    margin: 20px 0;
+    font-family: 'Fredoka One', cursive;
+    /*padding: 20px;*/
+    /*transition: border-color 0.5s ease-out;*/
+  }
+
+.text-disable {
+    color: #ccc;
+}
+.badge-secondary {
+  background-color: #C0C2BB;
+}
+.title-color-todo{
+  background-color: #74FFC5;
+}
+.title-color-doing{
+  background-color: #F7F755;
+} 
+::ng-deep .mat-tooltip {
+  background:red;
+}

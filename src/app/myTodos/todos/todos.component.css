@@ -1,0 +1,34 @@
+:host{
+    display: block;
+    box-shadow: 5px;
+    font-family: 'Fredoka One', cursive;
+}
+.loading-bar {
+    width: 200px;
+    height: 20px;
+    border: 1px solid #007bff;
+    margin: auto;
+    box-sizing: content-box;
+  }
+.loading-bar-element {
+    width: 0;
+    height: 20px;
+    background-color: #55D1F7;
+    animation: loading 0.5s ease-out infinite; 
+  }
+  
+  @keyframes loading {
+    0% {
+      width: 0; 
+    }
+    100% {
+      width: 100%;
+    }
+}
+
+mat-paginator {
+  margin-top: 1rem;
+}
+mat-paginator {
+  background-color: #fafafa;
+}

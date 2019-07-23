@@ -1,0 +1,48 @@
+:host {
+    display: block;
+    border-radius: 3px;
+    box-shadow: 3px 3px 2px #ccc;
+    font-family: 'Fredoka One', cursive;
+}
+.valid {
+    background-color: green;
+    border: 1px solid green;
+}
+.subButton {
+    background-color: #17a2b8;
+    border: 1px solid #17a2b8;
+}
+.invalid{
+    background-color: darkgray;
+    border: 1px solid darkgray;
+}
+.checkedState{
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    animation: check 300ms ease-out forwards;
+    cursor: pointer;
+    
+}
+
+@keyframes check {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(50px);
+        opacity: 0.8;
+    }
+ 
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+::ng-deep .mat-tooltip {
+    background: red;
+}
+
+

@@ -1,0 +1,81 @@
+<div class="row mt-3">
+  <div class="col-12">
+    <button
+      class="btn btn-primary"
+      *ngIf="!createNew"
+      (click)="createNew = true"
+    >
+      Create new Task
+    </button>
+    <button
+      class="btn btn-danger"
+      *ngIf="createNew"
+      (click)="createNew = false"
+    >
+      Cancel
+    </button>
+  </div>
+
+  <!-- <div class="col-6">
+    <button *ngIf="!showFriendList" class="btn btn-primary float-right"
+    (click)="showFriendList = true"
+    >
+      Friends
+    </button>
+    <button
+      class="btn btn-danger float-right"
+      *ngIf="showFriendList"
+      (click)="showFriendList = false"
+    >
+      Cancel
+    </button>
+  </div> -->
+</div>
+
+<!-- <div class="row">
+  <div class="col-12" style="overflow: hidden;">
+    <app-friend-list *ngIf="showFriendList" @slideDown></app-friend-list> 
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-12" style="overflow: hidden">
+    <app-new-todo
+      *ngIf="createNew"
+      @slideDown
+      (todoCreated)="onCreated($event)"
+      (creationCancelled)="createNew = false"
+    ></app-new-todo>
+  </div>
+</div>
+
+<!-- (todoCreated)="onCreated($event)" -->
+<div class="row mt-5">
+  <div class="col-12">
+    <div class="loading-bar" *ngIf="!todoArr">
+      <div class="loading-bar-element" *ngIf="progress != 'finished'"></div>
+    </div>
+    <div [@listState]="todoArr?.length">
+      <app-todo
+        *ngFor="let todo of todoArr; let i = index"
+        [todo]="todo"
+        [markedIndex]="markedPrjIndex"
+        (deleteTask)="onDeleteTask(i)"
+        (viewTask)="onView(i)"
+        (editTask)="onEdit(i)"
+        (undoTask)="onUndo(i)"
+        
+        [@itemState]="createNew ? 'slidDown' : 'slidUp'"
+        [@markedState]="markedPrjIndex === i ? 'marked' : 'default'"
+        (click)="markedPrjIndex = i"
+      ></app-todo>
+    </div>  
+  </div>
+</div>
+
+<mat-paginator
+  *ngIf="todoArr?.length > 0"
+  [length]="totalPosts"
+  [pageSize]="postsPerPage"
+  [pageSizeOptions]="pageSizeOption"
+  (page)="onChangedPage($event)"
+></mat-paginator>

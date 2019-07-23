@@ -1,0 +1,99 @@
+
+<mat-sidenav-container >
+
+      <mat-sidenav #sidenav>
+
+          <mat-nav-list *ngIf="isAuthenticated">
+              <a *ngIf="isAuthenticated"
+              mat-list-item
+              [matTooltip]= "fullName"
+              ><mat-icon>
+                account_circle
+              </mat-icon>
+              <span class="nav-caption">{{fullName}}</span>
+            </a>
+              <a mat-list-item routerLinkActive="active" routerLink="/friends" (click)="sidenav.close()">
+              <mat-icon>people</mat-icon>
+              <span class="nav-caption">Friends</span>
+              </a>
+             
+              <mat-list-item *ngIf="isAuthenticated" >
+                <button mat-icon-button (click)="onLogout();sidenav.close()">
+                  <mat-icon>eject</mat-icon>
+                  <span class="nav-caption">Logout</span>
+                </button>
+              </mat-list-item>
+      
+      
+          </mat-nav-list>
+      
+        </mat-sidenav>
+
+  
+  <mat-sidenav-content>
+    <mat-toolbar *ngIf="isAuthenticated">
+      <div fxHide.gt-xs><button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button></div>
+      <a
+      *ngIf="isAuthenticated"
+      routerLinkActive="active"
+      routerLink="/myTodos"
+      >All Tasks</a>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+
+          <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+              <li>
+                  <a *ngIf="isAuthenticated"
+              mat-icon-button
+              [matTooltip]= "fullName"
+              color="primary"
+              class="float-right" 
+              ><mat-icon>
+                account_circle
+              </mat-icon></a>
+                </li>
+            <li *ngIf="!isAuthenticated" >
+              <a  routerLinkActive="active" routerLink="/signin"
+                >Login</a
+              >
+            </li>
+            <li *ngIf="!isAuthenticated" >
+              <a routerLinkActive="active" routerLink="/signup"
+                >Sign Up</a
+              >
+            </li>
+            <li *ngIf="isAuthenticated" >
+              <a mat-icon-button routerLinkActive="active" routerLink="/friends"
+              matTooltip = "Friends"
+                ><mat-icon color='primary'>
+                  people
+                </mat-icon></a
+              >
+            </li>
+            <li >
+              <a *ngIf="isAuthenticated"
+              mat-icon-button
+              matTooltip = "Logout"
+              color="primary"
+              (click)="onLogout()"
+              ><mat-icon>
+                eject
+              </mat-icon></a>
+            </li>
+          </ul>
+    
+      </div>
+    </mat-toolbar>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

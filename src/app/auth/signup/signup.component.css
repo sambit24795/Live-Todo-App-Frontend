@@ -1,0 +1,68 @@
+:host {
+    display: block;
+    font-family: 'Fredoka One', cursive;
+}
+
+h3 {
+    font-family: fantasy;
+}
+
+
+mat-form-field {
+    width: 100%;
+} 
+
+.card {
+    width: 100%;
+    margin: auto;
+    justify-content: space-around;
+}
+.jumbotron {
+    margin-top: 6rem;
+    padding: 20px 20px;
+    background: #fafafa;
+}
+/* h3 {
+    color: #74FFC5;
+    animation: check 300ms ease-out infinite;
+} */
+
+
+/* @keyframes check {
+    0% {
+        color: rgb(4, 121, 4);
+        opacity: 1;
+    }
+    50% {
+        color: rgb(148, 148, 6);
+        opacity: 1;
+    }
+    75% {
+        color: rgb(59, 59, 59);
+        opacity: 1;
+    }
+ 
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+} */
+::ng-deep.mat-button {
+    text-align: left !important;
+}
+
+ 
+.icon {
+    line-height: 1;
+    display: inline-flex;
+    vertical-align: middle;
+  }
+  
+  .display {
+    display: flex;
+    align-items: center;
+  }
+  
+  .h6 {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }

@@ -1,0 +1,167 @@
+<div class="container">
+  <div class="row">
+    <mat-card [ngClass]="backgroundClass()" style="width: 50rem">
+      <mat-card-content>
+        <form
+          [formGroup]="todoForm"
+          (ngSubmit)="onEdit()"
+          [@formState]="todoForm.value"
+          [@buttonState]="todoForm.valid"
+          [@checkedState]="todoForm.get('subtaskString').value"
+        >
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label class="font-weight-bold">Task</label>
+                <input
+                  type="text"
+                  id="title"
+                  class="form-control"
+                  formControlName="title"
+                />
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="font-weight-bold">Subtasks</label>
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="subtaskString"
+                  id="subtaskString"
+                  #subinput
+                  placeholder="optional..."
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-success"
+                    id="formArrybtn"
+                    type="button"
+                    [ngClass]="
+                      todoForm.get('subtaskString').value
+                        ? 'subButton'
+                        : 'invalid'
+                    "
+                    [disabled]="!todoForm.get('subtaskString').value"
+                    (click)="onAddsubTodos(subinput)"
+                    type="button"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12" formArrayName="subTodos">
+              <div
+                class="row"
+                *ngFor="
+                  let todoCntrl of todoForm.get('subTodos')['controls'];
+                  let i = index
+                "
+                [formGroupName]="i"
+              >
+                <div class="col-8">
+                  <mat-checkbox
+                    formControlName="check"
+                    [checked]="false"
+                    color="warn"
+                  >
+                    <input
+                      id="inputCheck"
+                      type="text"
+                      class="form-control"
+                      matTooltip="double click to delete"
+                      [ngClass]="{ checkedState: !checked }"
+                      formControlName="name"
+                      readonly
+                      (dblclick)="onRemove(i)"
+                    />
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group">
+                <label class="font-weight-bold">Description</label>
+                <textarea
+                  type="text"
+                  id="description"
+                  class="form-control"
+                  rows="4"
+                  formControlName="description"
+                >
+                </textarea>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label class="font-weight-bold">Date</label>
+                <input
+                  type="text"
+                  id="date"
+                  class="form-control"
+                  formControlName="date"
+                  [owlDateTime]="dt1"
+                />
+                <span class="trigger">
+                  <i
+                    matSuffix
+                    class="material-icons float-right"
+                    style="cursor: pointer;"
+                    [owlDateTimeTrigger]="dt1"
+                  >
+                    today
+                  </i>
+                </span>
+                <owl-date-time #dt1></owl-date-time>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label class="font-weight-bold">Status</label>
+                <select
+                  type="text"
+                  id="status"
+                  class="form-control"
+                  formControlName="status"
+                  ><option class="text-capitalize">
+                    todo
+                  </option>
+                  <option class="text-capitalize">
+                    done
+                  </option>
+                  <option class="text-capitalize">
+                    doing
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="!todoForm.valid"
+            [ngClass]="todoForm.valid ? 'valid' : 'invalid'"
+            class="btn btn-success"
+            id="btnSubmit"
+          >
+            Edit Task
+          </button>
+          <button
+            type="button"
+            id="btnCancel"
+            class="btn btn-danger m-1"
+            (click)="onCancel()"
+          >
+            cancel
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

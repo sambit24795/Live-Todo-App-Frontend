@@ -1,0 +1,154 @@
+<div class="jumbotron d-flex align-items-center">
+  <div class="container" style="width: 35rem;">
+    <div class="row">
+      <div class="col-12">
+        <div class="row text-center mb-3">
+          <div class="col-12">
+            <h3>Todoapp</h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="card-title display h6">
+                  <i
+                    class="material-icons-outlined"
+                    matSuffix
+                    style="font-size: 1.4rem;"
+                    >person</i
+                  >Create your account
+                </div>
+              </div>
+            </div>
+
+            <form (submit)="onSignup()" [formGroup]="signupForm">
+              <div class="row">
+                <div class="col-md-6 col-xs-12 col-sm-12 col-xl-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Firstname</mat-label>
+                    <input matInput type="text" formControlName="firstname" />
+                    <mat-error
+                      *ngIf="signupForm.controls['firstname'].errors?.minlength"
+                      >* please enter atleast 3 characters</mat-error
+                    >
+                    <mat-error
+                      *ngIf="
+                        signupForm.controls['firstname'].touched &&
+                        signupForm.controls['firstname'].errors?.required
+                      "
+                      >* This is a required field!</mat-error
+                    >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12 col-sm-12 col-xl-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Lastname(optional)</mat-label>
+                    <input matInput type="text" formControlName="lastname" />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <mat-form-field appearance="outline" class="mb-3">
+                <mat-label>email</mat-label>
+                <input matInput type="email" formControlName="email" />
+
+                <mat-error
+                  *ngIf="
+                    signupForm.controls['email'].touched &&
+                    signupForm.controls['email'].errors?.required
+                  "
+                  >* This is a required field!</mat-error
+                >
+                <mat-error
+                  *ngIf="
+                    signupForm.controls['email'].touched &&
+                    signupForm.controls['email'].errors?.pattern
+                  "
+                  >* This is not a valid email!</mat-error
+                >
+
+                <mat-hint>Enter a valid email address</mat-hint>
+              </mat-form-field>
+
+              <div class="row">
+                <div class="col-md-6 col-xs-12 col-sm-12 col-xl-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input
+                      matInput
+                      [type]="hide ? 'password' : 'text'"
+                      formControlName="password"
+                    />
+                    <mat-error
+                      *ngIf="signupForm.controls['password'].errors?.minlength"
+                      >* Please enter atleast 6 characters</mat-error
+                    >
+                    <mat-error
+                      *ngIf="
+                        signupForm.controls['password'].touched &&
+                        signupForm.controls['password'].errors?.required
+                      "
+                      >* This is a required field!</mat-error
+                    >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-xs-12 col-sm-12 col-xl-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Confirm</mat-label>
+                    <input
+                      matInput
+                      [type]="hide ? 'password' : 'text'"
+                      formControlName="confirm"
+                    />
+                    <mat-error
+                      *ngIf="
+                        signupForm.controls['confirm'].errors
+                          ?.appConfirmEqualValidator
+                      "
+                      >Password does not match</mat-error
+                    >
+
+                    <mat-icon
+                      class="material-icons-outlined"
+                      matSuffix
+                      (click)="hide = !hide"
+                      style="cursor: pointer"
+                      >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+                    >
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Phone number(optional)</mat-label>
+                <ngx-mat-intl-tel-input
+                  matInput
+                  type="number"
+                  [preferredCountries]="['in', 'us', 'sd']"
+                  [enablePlaceholder]="true"
+                  formControlName="phone"
+                ></ngx-mat-intl-tel-input>
+              </mat-form-field>
+
+              <div class="row">
+                <div class="col-6">
+                  <p><a routerLink="/signin">Sign in instead</a></p>
+                </div>
+                <div class="col-6 text-right">
+                  <button
+                    type="submit"
+                    [disabled]="!signupForm.valid"
+                    class="btn btn-success"
+                  >
+                    Signup
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

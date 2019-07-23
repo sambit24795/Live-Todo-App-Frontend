@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <mat-card [ngClass]="backgroundClass()">
+      <mat-card-header>
+        <!--  <div mat-card-avatar class="example-header-image"></div> -->
+
+        <mat-card-title [ngClass]="getDisableStatus()">
+          <h4 class="font-weight-bold">
+            {{ data.title }}
+          </h4>
+        </mat-card-title>
+        <mat-card-subtitle [ngClass]="getDisableStatus()">
+          <p class=" font-weight-bold">{{ data.date }}</p>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="col-12">
+          <h6 [ngClass]="getDisableStatus()">
+            {{ data.description }}
+          </h6>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content  *ngIf="data.subTodos.length > 0">
+        <div
+          class="col-12 "
+          [ngClass]="getDisableStatus()"
+          *ngFor="let subtodo of data.subTodos; let i = index"
+        >
+          <ul>
+            <li>
+              <p [ngClass]="{ strikeThrough: subtodo.check == true }">
+                {{ subtodo.name }}
+              </p>
+            </li>
+          </ul>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

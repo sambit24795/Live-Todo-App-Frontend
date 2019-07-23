@@ -1,0 +1,130 @@
+:host {
+  display: block;
+  border-radius: 3px;
+  box-shadow: 3px 3px 2px rgb(221, 221, 221);
+  font-family: 'Fredoka One', cursive;
+}
+.valid {
+  background-color: green;
+  border: 1px solid green;
+}
+.subButton {
+  background-color: #17a2b8;
+  border: 1px solid #17a2b8;
+}
+.invalid {
+  background-color: darkgray;
+  border: 1px solid darkgray;
+}
+.checkedState {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  text-decoration: "line-through";
+  animation: check 300ms ease-out forwards;
+  cursor: pointer;
+}
+
+@keyframes check {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(50px);
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+::ng-deep .mat-tooltip {
+  background: red;
+}
+
+.todo-card {
+  width: 100%;
+  height: 100%;
+  background-color: #c3ffe6;
+}
+
+.doing-card {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffac;
+}
+
+.done-card {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(221, 221, 221);
+}
+
+.todo-card #date.form-control {
+  background-color: #c3ffe6;
+  border: 1px solid black;
+}
+.doing-card #date.form-control {
+  background-color: #ffffac;
+  border: 1px solid black;
+}
+.done-card #date.form-control {
+  background-color: rgb(221, 221, 221);
+  border: 1px solid black;
+}
+
+.todo-card #title.form-control {
+  background-color: #c3ffe6;
+  border: 1px solid black;
+}
+.doing-card #title.form-control {
+  background-color: #ffffac;
+  border: 1px solid black;
+}
+.done-card #title.form-control {
+  background-color: rgb(221, 221, 221);
+  border: 1px solid black;
+}
+
+.todo-card #subtaskString.form-control {
+  background-color: #c3ffe6;
+  border: 1px solid black;
+}
+.doing-card #subtaskString.form-control {
+  background-color: #ffffac;
+  border: 1px solid black;
+}
+.done-card #subtaskString.form-control {
+  background-color: rgb(221, 221, 221);
+  border: 1px solid black;
+}
+
+.todo-card #description.form-control {
+  background-color: #c3ffe6;
+  border: 1px solid black;
+}
+.doing-card #description.form-control {
+  background-color: #ffffac;
+  border: 1px solid black;
+}
+.done-card #description.form-control {
+  background-color: rgb(221, 221, 221);
+  border: 1px solid black;
+}
+
+.todo-card #status.form-control {
+  background-color: #c3ffe6;
+  border: 1px solid black;
+}
+.doing-card #status.form-control {
+  background-color: #ffffac;
+  border: 1px solid black;
+}
+.done-card #status.form-control {
+  background-color: rgb(221, 221, 221);
+  border: 1px solid black;
+}
+/* #title #subtaskString #description */
